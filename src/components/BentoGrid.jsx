@@ -2,6 +2,17 @@ import React from 'react'
 import BentoCard, { BentoTilt } from './BentoCard'
 
 const BentoGrid = () => {
+  const techMedia = {
+    keyboard: '/media/dev-typing-dark.mp4',
+    codeScroll: '/media/react-typescript-scroll.mp4',
+    stylusUi: '/media/designer-stylus-wireframe.mp4',
+    studioDesk: '/media/minimalist-studio-desk.mp4',
+    fallbackA: 'https://media.w3.org/2010/05/sintel/trailer.mp4',
+    fallbackB: 'https://vjs.zencdn.net/v/oceans.mp4',
+    fallbackC: 'https://media.w3.org/2010/05/bunny/movie.mp4',
+    fallbackD: 'https://www.w3schools.com/html/mov_bbb.mp4',
+  }
+
   return (
     <section className="bg-white pb-52">
       <div className="container mx-auto px-3 md:px-10">
@@ -16,13 +27,14 @@ const BentoGrid = () => {
 
         <BentoTilt className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]">
           <BentoCard
-            src="https://media.w3.org/2010/05/sintel/trailer.mp4"
+            src={techMedia.keyboard}
+            fallbackSrc={techMedia.fallbackA}
             title={
               <>
-                creati<b>ve</b> burst
+                kinetic<b> co</b>de
               </>
             }
-            description="Our flagship approach to rapid brand iteration and visual storytelling."
+            description="Low-light close-up of mechanical keystrokes for a focused, high-performance studio mood."
             isComingSoon
           />
         </BentoTilt>
@@ -30,37 +42,40 @@ const BentoGrid = () => {
         <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
           <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
             <BentoCard
-              src="https://vjs.zencdn.net/v/oceans.mp4"
+              src={techMedia.codeScroll}
+              fallbackSrc={techMedia.fallbackB}
               title={
                 <>
-                  stra<b>te</b>gic focus
+                  re<b>ac</b>t flow
                 </>
               }
-              description="Deep research meets pixel-perfect execution."
+              description="Clean React and TypeScript lines scrolling on a dark 4K monitor."
             />
           </BentoTilt>
 
           <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
             <BentoCard
-              src="https://media.w3.org/2010/05/bunny/movie.mp4"
+              src={techMedia.stylusUi}
+              fallbackSrc={techMedia.fallbackC}
               title={
                 <>
-                  mo<b>de</b>rn weave
+                  ui<b> cr</b>aft
                 </>
               }
-              description="Tailored digital experiences for the next generation of agencies."
+              description="A designer refining wireframes on tablet with stylus precision."
             />
           </BentoTilt>
 
           <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
             <BentoCard
-              src="https://www.w3schools.com/html/mov_bbb.mp4"
+              src={techMedia.studioDesk}
+              fallbackSrc={techMedia.fallbackD}
               title={
                 <>
-                  ar<b>ti</b>san code
+                  ni<b>gh</b>t studio
                 </>
               }
-              description="Handcrafted solutions for complex technical challenges."
+              description="Minimalist workstation atmosphere with olive and deep-blue monitor glows."
             />
           </BentoTilt>
 
@@ -79,12 +94,14 @@ const BentoGrid = () => {
 
           <BentoTilt className="bento-tilt_2">
             <video
-              src="https://vjs.zencdn.net/v/oceans.mp4"
+              src={techMedia.codeScroll}
               loop
               muted
               autoPlay
+              playsInline
               className="size-full object-cover object-center"
             />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[#040608]/65 via-transparent to-[#1a2740]/45" />
           </BentoTilt>
         </div>
       </div>

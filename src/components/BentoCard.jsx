@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react'
 
-const BentoCard = ({ src, title, description, isComingSoon }) => {
+const BentoCard = ({ src, fallbackSrc, title, description, isComingSoon }) => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
   const [hoverOpacity, setHoverOpacity] = useState(0)
+  const [videoSrc, setVideoSrc] = useState(src)
   const hoverButtonRef = useRef(null)
 
   const handleMouseMove = (e) => {
@@ -20,12 +21,20 @@ const BentoCard = ({ src, title, description, isComingSoon }) => {
   return (
     <div className="relative size-full">
       <video
-        src={src}
+        src={videoSrc}
         loop
         muted
         autoPlay
+        playsInline
+        onError={() => {
+          if (fallbackSrc && videoSrc !== fallbackSrc) {
+            setVideoSrc(fallbackSrc)
+          }
+        }}
         className="absolute left-0 top-0 size-full object-cover object-center"
       />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#040608]/70 via-[#0b0f16]/45 to-[#151d2d]/55" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(61,68,50,0.22),transparent_45%),radial-gradient(circle_at_20%_80%,rgba(72,118,200,0.22),transparent_50%)]" />
       <div className="relative z-10 flex size-full flex-col justify-between p-5 text-blue-50">
         <div>
           <h1 className="bento-title font-serif italic text-3xl md:text-4xl text-white">
