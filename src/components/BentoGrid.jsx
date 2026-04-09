@@ -14,18 +14,19 @@ const BentoGrid = () => {
   }
 
   return (
-    <section className="bg-white pb-52">
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#0b0f14] via-[#0f172a] to-[#0b0f14] pb-52">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_10%_20%,rgba(72,118,200,0.14),transparent_36%),radial-gradient(circle_at_90%_75%,rgba(61,68,50,0.12),transparent_35%)]" />
       <div className="container mx-auto px-3 md:px-10">
-        <div className="px-5 py-32">
-          <p className="font-sans text-lg text-olive/60">
+        <div className="px-5 py-32 relative z-10">
+          <p className="font-sans text-lg tracking-wide text-white/65">
             Design & Development
           </p>
-          <p className="max-w-md font-serif text-lg text-olive/60">
+          <p className="max-w-md font-serif text-lg font-light text-white/70">
             We weave logic into your digital loom, creating patterns that resonate with your users.
           </p>
         </div>
 
-        <BentoTilt className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]">
+        <BentoTilt className="border border-white/10 relative mb-7 h-96 w-full overflow-hidden rounded-2xl md:h-[65vh] backdrop-blur-sm">
           <BentoCard
             src={techMedia.keyboard}
             fallbackSrc={techMedia.fallbackA}
@@ -39,7 +40,7 @@ const BentoGrid = () => {
           />
         </BentoTilt>
 
-        <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
+        <div className="relative z-10 grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
           <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
             <BentoCard
               src={techMedia.codeScroll}
@@ -80,7 +81,7 @@ const BentoGrid = () => {
           </BentoTilt>
 
           <BentoTilt className="bento-tilt_2">
-            <div className="flex size-full flex-col justify-between bg-olive p-5">
+            <div className="flex size-full flex-col justify-between rounded-2xl border border-white/10 bg-gradient-to-br from-[#111827] via-[#1b2432] to-[#0f172a] p-5">
               <h1 className="bento-title max-w-64 font-serif italic text-white text-3xl">
                 mo<b>re</b> coming s<b>oo</b>n
               </h1>

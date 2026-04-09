@@ -67,18 +67,18 @@ const StatCard = ({ title, value, subtext, className = "" }) => {
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`bento-glass group perspective-1000 ${className}`}
+      className={`bento-glass group perspective-1000 transition-transform duration-500 hover:scale-[1.03] hover:shadow-[0_18px_60px_rgba(74,109,164,0.16)] ${className}`}
     >
       <div className="relative z-10">
-        <h3 className="text-4xl md:text-6xl font-serif text-white mb-2">
+        <h3 className="text-4xl md:text-6xl font-serif font-light tracking-wide text-white mb-3">
           {value.includes('+') ? `${count}+` : 
            value.includes('%') ? `${count}%` : 
            value.includes('/') ? `${count}/7` : count}
         </h3>
-        <p className="text-sm uppercase tracking-widest text-[#3d4432] font-semibold mb-1">{title}</p>
-        <p className="text-xs text-white/40 leading-relaxed">{subtext}</p>
+        <p className="text-xs uppercase tracking-[0.22em] text-white/55 font-semibold mb-2">{title}</p>
+        <p className="text-sm text-white/70 leading-relaxed">{subtext}</p>
       </div>
-      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl" />
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#3d4432]/14 via-[#223048]/12 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
     </div>
   );
 };
@@ -124,9 +124,10 @@ const Hero = () => {
   return (
     <section 
       ref={containerRef}
-      className="relative min-h-screen w-full bg-[#050505] overflow-hidden flex items-center pt-20"
+      className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-[#0b0f14] via-[#0f172a] to-[#111827] flex items-center pt-24"
     >
       <TechBackground />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(72,118,200,0.18),transparent_38%),radial-gradient(circle_at_80%_25%,rgba(61,68,50,0.16),transparent_36%),radial-gradient(circle_at_65%_75%,rgba(54,74,106,0.18),transparent_45%)]" />
 
       {/* Top CTA Button */}
       <div className="absolute top-8 right-8 z-50">
@@ -135,7 +136,7 @@ const Hero = () => {
             <Button
               title="Work With Us"
               id="cta-hero"
-              containerClass="bg-transparent border border-[#3d4432]/30 text-white animate-breathing px-8 py-3 rounded-full hover:bg-[#3d4432] transition-colors"
+              containerClass="bg-transparent border border-white/30 text-white px-8 py-3 rounded-full hover:bg-white/10 transition-all duration-300 hover:shadow-[0_0_26px_rgba(114,154,224,0.25)]"
             />
           </div>
         </Magnetic>
@@ -143,41 +144,53 @@ const Hero = () => {
 
       <div className="container mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
         {/* Left Side: Typography */}
-        <div className="space-y-4">
+        <div className="space-y-6">
+          <p className="hero-sub inline-block rounded-full border border-white/15 bg-white/[0.03] px-4 py-1.5 text-[11px] uppercase tracking-[0.25em] text-white/70">
+            Digital Strategy • UI/UX • Web Development • E-commerce
+          </p>
           <div className="overflow-hidden">
-            <h1 className="special-font text-[10rem] md:text-[14rem] leading-none mb-4 stagger-line font-serif italic bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-[#3d4432]">
-              WEAVE
+            <h1 className="stagger-line font-serif text-5xl md:text-7xl lg:text-8xl leading-[1.05] tracking-[0.02em] text-white [text-shadow:0_0_28px_rgba(134,170,238,0.22)]">
+              Digital Experiences, <span className="italic text-white/95">Engineered.</span>
             </h1>
           </div>
-          <p className="hero-sub text-xl md:text-2xl text-white/60 font-light max-w-lg mb-12">
-            Intertwining creativity with technical precision. <br />
-            Crafting digital tapestries for the modern age.
+          <p className="hero-sub text-lg md:text-xl text-white/70 font-light max-w-2xl">
+            From digital strategy to high-performance web platforms, we help brands grow with precision and intent.
           </p>
-          <div className="overflow-hidden pt-8">
-            <h2 className="special-font text-7xl md:text-9xl stagger-line text-outline uppercase tracking-tighter">
-              AGENCY
-            </h2>
+          <p className="hero-sub text-sm md:text-base text-white/55 max-w-xl">
+            We align business outcomes with thoughtful design systems and scalable engineering.
+          </p>
+          <div className="hero-sub flex flex-wrap items-center gap-4 pt-6">
+            <Magnetic strength={0.25}>
+              <button className="rounded-full bg-[#3d4432] px-8 py-3 font-sans text-xs uppercase tracking-[0.18em] text-white transition-all duration-300 hover:scale-105 hover:bg-[#525d43] hover:shadow-[0_0_24px_rgba(94,118,73,0.5)]">
+                Work With Us
+              </button>
+            </Magnetic>
+            <Magnetic strength={0.2}>
+              <button className="rounded-full border border-white/25 bg-white/[0.02] px-8 py-3 font-sans text-xs uppercase tracking-[0.18em] text-white transition-all duration-300 hover:scale-105 hover:border-white/45 hover:bg-white/10 hover:shadow-[0_0_24px_rgba(112,149,220,0.3)]">
+                View Our Work
+              </button>
+            </Magnetic>
           </div>
         </div>
 
         {/* Right Side: Bento Cards */}
         <div className="grid grid-cols-2 gap-6 h-full">
           <StatCard 
-            title="Experience" 
+            title="Projects Delivered Globally" 
             value="50+" 
-            subtext="Premium projects delivered across 5 continents"
+            subtext="Trusted by ambitious teams across industries and regions."
             className="col-span-2 stat-card" 
           />
           <StatCard 
-            title="Quality" 
+            title="Commitment To Quality & Precision" 
             value="100%" 
-            subtext="Client satisfaction rate through code excellence"
+            subtext="Crafted interfaces and robust systems with uncompromising standards."
             className="stat-card" 
           />
           <StatCard 
-            title="Reliability" 
+            title="Reliable Support & Iteration" 
             value="24/7" 
-            subtext="Available around the clock for digital support"
+            subtext="Continuous collaboration and improvements through every release cycle."
             className="stat-card" 
             // Handle non-numeric count-up differently
           />

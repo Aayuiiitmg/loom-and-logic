@@ -37,7 +37,7 @@ const Navbar = ({ setPage, currentPage }) => {
         </div>
 
         <Magnetic strength={0.2}>
-          <button className="rounded-full bg-white px-6 py-2.5 font-sans text-xs uppercase tracking-widest text-black transition-transform hover:scale-105">
+          <button className="rounded-full border border-white/20 bg-white/5 px-6 py-2.5 font-sans text-xs uppercase tracking-widest text-white transition-all duration-300 hover:scale-105 hover:bg-white/10 hover:shadow-[0_0_24px_rgba(112,149,220,0.25)]">
             Work With Us
           </button>
         </Magnetic>
