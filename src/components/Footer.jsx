@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Facebook, Linkedin } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Linkedin, Instagram } from 'lucide-react';
 
 const Footer = ({ setPage }) => {
   const navLinks = [
@@ -27,10 +27,10 @@ const Footer = ({ setPage }) => {
           {/* Right: Nav & Social */}
           <div className="flex-1 w-full md:w-auto">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 pb-8 border-b border-white/10">
-              <nav>
-                <ul className="flex flex-wrap gap-x-6 gap-y-4 text-sm font-medium text-white/80">
+              <nav className="w-full md:flex-1">
+                <ul className="grid w-full grid-cols-3 items-center text-sm font-medium text-white/80">
                   {navLinks.map((link) => (
-                    <li key={link.name}>
+                    <li key={link.name} className="text-left md:text-center">
                       <button
                         onClick={() => setPage?.(link.id)}
                         className="hover:text-white transition-colors"
@@ -48,6 +48,14 @@ const Footer = ({ setPage }) => {
                 <a href="#" className="size-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all">
                   <Linkedin size={14} />
                 </a>
+                <a
+                  href="https://www.instagram.com/loomandlogicwebagency?igsh=cHhqbnRobXBzZmk0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="size-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all"
+                >
+                  <Instagram size={14} />
+                </a>
               </div>
             </div>
 
@@ -55,26 +63,25 @@ const Footer = ({ setPage }) => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pt-8 items-start">
               <div className="flex items-start gap-3">
                 <Mail className="text-white/40 mt-1" size={18} />
-                <div>
+                <div className="min-w-0">
                   <p className="text-[10px] uppercase tracking-widest text-white/30 mb-1">Email Us</p>
-                  <p className="text-sm font-light text-white/70">enquiry@loomandlogic.com</p>
+                  <p className="text-sm font-light text-white/70 break-all leading-relaxed">loomandlogicwebagency@gmail.com</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Phone className="text-white/40 mt-1" size={18} />
                 <div>
                   <p className="text-[10px] uppercase tracking-widest text-white/30 mb-1">Call Us</p>
-                  <p className="text-sm font-light text-white/70">+91 96 5050 3679</p>
-                  <p className="text-sm font-light text-white/70">+91 98 9923 5987</p>
+                  <p className="text-sm font-light text-white/70">+91 9319825519</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <MapPin className="text-white/40 mt-1" size={18} />
-                <div>
+                <div className="min-w-0">
                   <p className="text-[10px] uppercase tracking-widest text-white/30 mb-1">Visit Us</p>
                   <p className="text-sm font-light text-white/70 leading-relaxed">
-                    B-1/H-2, Mohan Cooperative, Mathura Road,<br />
-                    New Delhi - 110044, India
+                    Bptp park floor 2 sector 76,<br />
+                    Faridabad Haryana
                   </p>
                 </div>
               </div>

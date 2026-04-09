@@ -3,6 +3,11 @@ import Magnetic from '../components/Magnetic'
 
 const Contact = () => {
   const [cursor, setCursor] = useState({ x: 0, y: 0, active: false })
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    projectDetails: ''
+  })
 
   const handleFormMove = (event) => {
     const nextActive = event.target.matches('input, textarea')
@@ -15,6 +20,26 @@ const Contact = () => {
 
   const handleFormLeave = () => {
     setCursor((previous) => ({ ...previous, active: false }))
+  }
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target
+    setFormData((previous) => ({
+      ...previous,
+      [name]: value
+    }))
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+
+    const to = 'loomandlogicwebagency@gmail.com'
+    const subject = encodeURIComponent(`New inquiry from ${formData.name || 'Website Contact Form'}`)
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nProject Details:\n${formData.projectDetails}`
+    )
+
+    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`
   }
 
   return (
@@ -40,7 +65,7 @@ const Contact = () => {
             </p>
 
             <div className="space-y-4">
-              <p className="font-sans text-lg text-white/90">idr.shubham@gmail.com</p>
+              <p className="font-sans text-lg text-white/90">loomandlogicwebagency@gmail.com</p>
               <p className="font-sans text-lg text-white/90">+91 9319825519</p>
             </div>
           </div>
@@ -49,18 +74,42 @@ const Contact = () => {
             className="relative space-y-8"
             onMouseMove={handleFormMove}
             onMouseLeave={handleFormLeave}
+            onSubmit={handleSubmit}
           >
             <div className="space-y-2">
               <label className="text-xs uppercase tracking-widest text-white/45">Name</label>
-              <input type="text" className="w-full border-b border-white/25 bg-transparent py-4 text-lg md:text-xl text-white outline-none transition-colors placeholder:text-white/40 focus:border-white focus:placeholder:text-[#3d4432]" placeholder="Your Name" />
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                required
+                className="w-full border-b border-white/25 bg-transparent py-4 text-lg md:text-xl text-white outline-none transition-colors placeholder:text-white/40 focus:border-white focus:placeholder:text-[#3d4432]"
+                placeholder="Your Name"
+              />
             </div>
             <div className="space-y-2">
               <label className="text-xs uppercase tracking-widest text-white/45">Email</label>
-              <input type="email" className="w-full border-b border-white/25 bg-transparent py-4 text-lg md:text-xl text-white outline-none transition-colors placeholder:text-white/40 focus:border-white focus:placeholder:text-[#a9c7ff]" placeholder="your@email.com" />
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+                className="w-full border-b border-white/25 bg-transparent py-4 text-lg md:text-xl text-white outline-none transition-colors placeholder:text-white/40 focus:border-white focus:placeholder:text-[#a9c7ff]"
+                placeholder="your@email.com"
+              />
             </div>
             <div className="space-y-2">
               <label className="text-xs uppercase tracking-widest text-white/45">Project Details</label>
-              <textarea className="w-full border-b border-white/25 bg-transparent py-4 text-lg md:text-xl text-white outline-none transition-colors placeholder:text-white/40 focus:border-white focus:placeholder:text-[#3d4432] h-32 resize-none" placeholder="Tell us about your vision..." />
+              <textarea
+                name="projectDetails"
+                value={formData.projectDetails}
+                onChange={handleInputChange}
+                required
+                className="w-full border-b border-white/25 bg-transparent py-4 text-lg md:text-xl text-white outline-none transition-colors placeholder:text-white/40 focus:border-white focus:placeholder:text-[#3d4432] h-32 resize-none"
+                placeholder="Tell us about your vision..."
+              />
             </div>
 
             <div className="pt-8">
