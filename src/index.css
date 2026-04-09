@@ -126,13 +126,27 @@ body {
 }
 
 @keyframes spin78232 {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes wobble1 {
-  0%, 100% { transform: translateY(0%) scale(1); opacity: 1; }
-  50% { transform: translateY(-66%) scale(0.65); opacity: 0.8; }
+
+  0%,
+  100% {
+    transform: translateY(0%) scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(-66%) scale(0.65);
+    opacity: 0.8;
+  }
 }
 
 /* Custom transitions for page navigation */
@@ -146,13 +160,16 @@ body {
 
 /* Custom Animations */
 @keyframes breathing {
-  0%, 100% { 
-    border-color: rgba(61, 68, 50, 0.3); 
-    box-shadow: 0 0 5px rgba(61, 68, 50, 0.1); 
+
+  0%,
+  100% {
+    border-color: rgba(61, 68, 50, 0.3);
+    box-shadow: 0 0 5px rgba(61, 68, 50, 0.1);
   }
-  50% { 
-    border-color: rgba(61, 68, 50, 0.8); 
-    box-shadow: 0 0 25px rgba(61, 68, 50, 0.4); 
+
+  50% {
+    border-color: rgba(61, 68, 50, 0.8);
+    box-shadow: 0 0 25px rgba(61, 68, 50, 0.4);
   }
 }
 

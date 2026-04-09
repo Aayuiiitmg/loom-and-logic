@@ -71,7 +71,7 @@ const BentoGrid = () => {
               </h1>
               <div className="size-10 self-end">
                 <svg viewBox="0 0 100 100" className="fill-white opacity-20">
-                    <circle cx="50" cy="50" r="40" />
+                  <circle cx="50" cy="50" r="40" />
                 </svg>
               </div>
             </div>
