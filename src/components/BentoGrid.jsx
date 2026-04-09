@@ -93,15 +93,27 @@ const BentoGrid = () => {
           </BentoTilt>
 
           <BentoTilt className="bento-tilt_2">
-            <video
-              src={techMedia.codeScroll}
-              loop
-              muted
-              autoPlay
-              playsInline
-              className="size-full object-cover object-center"
-            />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[#040608]/65 via-transparent to-[#1a2740]/45" />
+            <div className="relative size-full">
+              <video
+                src={techMedia.codeScroll}
+                loop
+                muted
+                autoPlay
+                playsInline
+                className="size-full object-cover object-center"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[#040608]/65 via-transparent to-[#1a2740]/45" />
+              <div className="pointer-events-none absolute inset-0 z-10 flex flex-col justify-between p-5 text-blue-50">
+                <div>
+                  <h1 className="bento-title font-serif italic text-3xl md:text-4xl text-white">
+                    code<b> vis</b>ion
+                  </h1>
+                  <p className="mt-3 max-w-64 text-sm md:text-base text-white/80">
+                    Focused code landscapes crafted for scalable products and refined user journeys.
+                  </p>
+                </div>
+              </div>
+            </div>
           </BentoTilt>
         </div>
       </div>
