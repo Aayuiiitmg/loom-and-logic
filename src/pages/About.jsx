@@ -5,7 +5,7 @@ import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const About = () => {
+const About = ({ setPage }) => {
   const containerRef = useRef(null);
 
   useGSAP(() => {
@@ -42,19 +42,19 @@ const About = () => {
   return (
     <div ref={containerRef} className="relative bg-[#080808] text-white overflow-hidden">
       {/* Background Glows */}
-      <div className="glow-purple top-[-10%] left-[-5%] w-[500px] h-[500px] opacity-40 hero-glow" />
-      <div className="glow-blue bottom-[20%] right-[-10%] w-[600px] h-[600px] opacity-30 hero-glow" />
+      <div className="glow-purple top-[-10%] left-[-5%] w-[500px] h-[500px] opacity-25 hero-glow hidden md:block" />
+      <div className="glow-blue bottom-[20%] right-[-10%] w-[600px] h-[600px] opacity-20 hero-glow hidden md:block" />
 
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-screen flex flex-center px-6 pt-32 pb-20">
+      <section className="relative min-h-screen flex flex-center px-4 sm:px-6 pt-28 md:pt-32 pb-16 md:pb-20">
         <div className="container mx-auto">
           <div className="max-w-5xl reveal-section">
-            <h1 className="hero-heading leading-none mb-8">
+            <h1 className="hero-heading leading-none mb-8 text-[clamp(2.6rem,10vw,7rem)]">
               Loom & Logic <br />
               <span className="text-gradient">Digital Architecture</span>
             </h1>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
-              <p className="text-2xl font-light text-white/60 leading-relaxed">
+              <p className="text-[clamp(1.125rem,3vw,1.5rem)] font-light text-white/60 leading-relaxed">
                 A Full-Service Digital & Web Solutions Company. 
                 We empower businesses to thrive online by blending innovative technology with strategic insights.
               </p>
@@ -70,10 +70,10 @@ const About = () => {
       </section>
 
       {/* 2. SERVICES SECTION */}
-      <section className="py-32 relative reveal-section">
-        <div className="container mx-auto px-6">
+      <section className="py-20 md:py-32 relative reveal-section">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="flex flex-col md:flex-row justify-between items-start mb-20">
-            <h2 className="text-5xl md:text-7xl font-serif mb-8 md:mb-0">
+            <h2 className="text-[clamp(2rem,8vw,4.5rem)] font-serif mb-8 md:mb-0">
               Our <span className="italic">Services</span>
             </h2>
             <div className="max-w-md text-white/60">
@@ -91,7 +91,7 @@ const About = () => {
               "Digital Strategy", "Design Services", "E-Commerce Solutions", "Web Development",
               "Web Application Development", "Technology", "Digital Marketing", "Web Hosting"
             ].map((service, i) => (
-              <div key={i} className="bg-[#0a0a0a] p-10 hover:bg-white/5 transition-all duration-500 group">
+              <div key={i} className="bg-[#0a0a0a] p-8 md:p-10 hover:bg-white/5 transition-all duration-500 group">
                 <span className="text-xs text-white/30 mb-4 block">0{i + 1}</span>
                 <h3 className="text-xl font-medium mb-4 group-hover:translate-x-2 transition-transform">{service}</h3>
                 <div className="h-0.5 w-0 bg-white/50 group-hover:w-full transition-all duration-500" />
@@ -108,12 +108,12 @@ const About = () => {
       </section>
 
       {/* 3. EXPERIENCE SECTION */}
-      <section className="py-32 bg-white/5 reveal-section">
-        <div className="container mx-auto px-6">
+      <section className="py-20 md:py-32 bg-white/5 reveal-section">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div className="flex flex-col justify-center">
               <div className="relative inline-block">
-                <h2 className="text-[12rem] md:text-[18rem] font-serif leading-[0.8] text-gradient opacity-80">
+                <h2 className="text-[clamp(5rem,22vw,18rem)] font-serif leading-[0.8] text-gradient opacity-80">
                   25+
                 </h2>
                 <p className="absolute bottom-0 left-0 text-lg md:text-xl tracking-[0.3em] uppercase text-white/40 ml-4 translate-y-full">
@@ -135,13 +135,13 @@ const About = () => {
       </section>
 
       {/* 4. PILLARS / TRANSFORMATION SECTION */}
-      <section className="py-40 relative reveal-section overflow-hidden">
-        <div className="container mx-auto px-6 relative z-10">
+      <section className="py-24 md:py-40 relative reveal-section overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="mb-24 relative">
-             <h2 className="text-7xl md:text-[12rem] font-serif text-white/5 absolute -top-12 md:-top-24 left-0 pointer-events-none select-none tracking-tighter">
+             <h2 className="text-[clamp(2.5rem,11vw,12rem)] font-serif text-white/5 absolute -top-6 md:-top-24 left-0 pointer-events-none select-none tracking-tighter">
                 TRANSFORMATION
              </h2>
-             <h3 className="text-4xl md:text-6xl font-light relative z-10 pt-4">
+             <h3 className="text-[clamp(1.8rem,6vw,3.8rem)] font-light relative z-10 pt-4">
                 Strategic <span className="italic font-serif">Pillars</span>
              </h3>
           </div>
@@ -174,12 +174,15 @@ const About = () => {
       </section>
 
       {/* Footer Contact Tease */}
-      <section className="py-32 text-center reveal-section">
-        <div className="container mx-auto px-6">
+      <section className="py-20 md:py-32 text-center reveal-section">
+        <div className="container mx-auto px-4 sm:px-6">
           <p className="text-white/40 uppercase tracking-widest text-sm mb-8">Ready to evolve?</p>
-          <a href="/contact" className="text-5xl md:text-9xl font-serif hover:italic transition-all">
+          <button
+            onClick={() => setPage?.('contact')}
+            className="text-[clamp(2.2rem,10vw,7rem)] font-serif hover:italic transition-all"
+          >
             Let's <span className="text-white/20">Connect</span>
-          </a>
+          </button>
         </div>
       </section>
     </div>

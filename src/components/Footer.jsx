@@ -1,22 +1,18 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Facebook, Linkedin } from 'lucide-react';
 
-const Footer = () => {
+const Footer = ({ setPage }) => {
   const navLinks = [
-    { name: 'About', href: '#' },
-    { name: 'Services', href: '#' },
-    { name: 'Portfolio', href: '#' },
-    { name: 'Clients', href: '#' },
-    { name: 'Careers', href: '#' },
-    { name: 'Blogs', href: '#' },
-    { name: 'Contact Us', href: '#' },
+    { name: 'Home', id: 'home' },
+    { name: 'About', id: 'about' },
+    { name: 'Contact', id: 'contact' },
   ];
 
   return (
-    <footer className="bg-[#080808] border-t border-white/10 py-16 px-6 md:px-12 text-white">
+    <footer className="bg-[#080808] border-t border-white/10 py-14 px-4 sm:px-6 md:px-12 text-white">
       <div className="max-w-7xl mx-auto">
         {/* Top Section */}
-        <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-10 md:gap-12 mb-12">
           {/* Left: Branding */}
           <div className="max-w-xs">
             <div className="flex items-center gap-3 mb-6">
@@ -35,7 +31,12 @@ const Footer = () => {
                 <ul className="flex flex-wrap gap-x-6 gap-y-4 text-sm font-medium text-white/80">
                   {navLinks.map((link) => (
                     <li key={link.name}>
-                      <a href={link.href} className="hover:text-white transition-colors">{link.name}</a>
+                      <button
+                        onClick={() => setPage?.(link.id)}
+                        className="hover:text-white transition-colors"
+                      >
+                        {link.name}
+                      </button>
                     </li>
                   ))}
                 </ul>
@@ -51,7 +52,7 @@ const Footer = () => {
             </div>
 
             {/* Bottom Contact Row */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 items-start">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pt-8 items-start">
               <div className="flex items-start gap-3">
                 <Mail className="text-white/40 mt-1" size={18} />
                 <div>
@@ -82,8 +83,8 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-[0.2em] text-white/20">
-          <p>© 2024 Loom & Logic Creative. All Rights Reserved.</p>
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-[0.2em] text-white/20 text-center md:text-left">
+          <p>© 2026 Loom & Logic Creative. All Rights Reserved.</p>
           <p>Built with Intent</p>
         </div>
       </div>

@@ -14,9 +14,8 @@ const BentoGrid = () => {
   }
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#0b0f14] via-[#0f172a] to-[#0b0f14] pb-52">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_10%_20%,rgba(72,118,200,0.14),transparent_36%),radial-gradient(circle_at_90%_75%,rgba(61,68,50,0.12),transparent_35%)]" />
-      <div className="container mx-auto px-3 md:px-10">
+    <section className="relative overflow-hidden bg-[#080808] pb-24 md:pb-52">
+      <div className="container mx-auto px-4 sm:px-6 md:px-10">
         <div className="px-5 py-32 relative z-10">
           <p className="font-sans text-lg tracking-wide text-white/65">
             Design & Development
@@ -40,7 +39,7 @@ const BentoGrid = () => {
           />
         </BentoTilt>
 
-        <div className="relative z-10 grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
+        <div className="relative z-10 grid w-full grid-cols-1 sm:grid-cols-2 sm:grid-rows-3 gap-5 sm:gap-7">
           <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
             <BentoCard
               src={techMedia.codeScroll}
@@ -54,7 +53,7 @@ const BentoGrid = () => {
             />
           </BentoTilt>
 
-          <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
+          <BentoTilt className="bento-tilt_1 row-span-1 sm:ms-0">
             <BentoCard
               src={techMedia.stylusUi}
               fallbackSrc={techMedia.fallbackC}
@@ -67,7 +66,7 @@ const BentoGrid = () => {
             />
           </BentoTilt>
 
-          <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
+          <BentoTilt className="bento-tilt_1 sm:me-0">
             <BentoCard
               src={techMedia.studioDesk}
               fallbackSrc={techMedia.fallbackD}

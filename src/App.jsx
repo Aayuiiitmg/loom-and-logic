@@ -10,10 +10,10 @@ function App() {
 
   const renderPage = () => {
     switch (currentPage) {
-      case 'home': return <Home />
-      case 'about': return <About />
+      case 'home': return <Home setPage={setCurrentPage} />
+      case 'about': return <About setPage={setCurrentPage} />
       case 'contact': return <Contact />
-      default: return <Home />
+      default: return <Home setPage={setCurrentPage} />
     }
   }
 
@@ -23,7 +23,7 @@ function App() {
       <main className="flex-grow">
         {renderPage()}
       </main>
-      <Footer />
+      <Footer setPage={setCurrentPage} />
     </div>
   )
 }

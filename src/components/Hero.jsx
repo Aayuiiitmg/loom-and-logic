@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import Button from "./Button";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -83,7 +82,7 @@ const StatCard = ({ title, value, subtext, className = "" }) => {
   );
 };
 
-const Hero = () => {
+const Hero = ({ setPage }) => {
   const containerRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -95,12 +94,12 @@ const Hero = () => {
   useGSAP(() => {
     if (isLoading) return;
 
-    // Split text staggered animation
+    const prefersReducedMotion = window.matchMedia("(max-width: 768px)").matches;
     const tl = gsap.timeline();
     tl.from(".stagger-line", {
-      y: 100,
+      y: prefersReducedMotion ? 20 : 60,
       opacity: 0,
-      duration: 1,
+      duration: prefersReducedMotion ? 0.5 : 0.9,
       stagger: 0.15,
       ease: "power4.out"
     })
@@ -112,11 +111,11 @@ const Hero = () => {
     }, "-=0.5")
     .from(".stat-card", {
       opacity: 0,
-      scale: 0.8,
-      y: 50,
-      duration: 1,
+      scale: prefersReducedMotion ? 0.96 : 0.9,
+      y: prefersReducedMotion ? 15 : 30,
+      duration: prefersReducedMotion ? 0.5 : 0.9,
       stagger: 0.2,
-      ease: "back.out(1.7)"
+      ease: "power3.out"
     }, "-=1");
 
   }, { scope: containerRef, dependencies: [isLoading] });
@@ -124,49 +123,31 @@ const Hero = () => {
   return (
     <section 
       ref={containerRef}
-      className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-[#0b0f14] via-[#0f172a] to-[#111827] flex items-center pt-24"
+      className="relative min-h-screen w-full overflow-hidden bg-[#080808] flex items-center pt-24"
     >
       <TechBackground />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(72,118,200,0.18),transparent_38%),radial-gradient(circle_at_80%_25%,rgba(61,68,50,0.16),transparent_36%),radial-gradient(circle_at_65%_75%,rgba(54,74,106,0.18),transparent_45%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#0b0f14]/80 via-transparent to-[#0b0f14]" />
 
-      {/* Top CTA Button */}
-      <div className="absolute top-8 right-8 z-50">
-        <Magnetic strength={0.2}>
-          <div>
-            <Button
-              title="Work With Us"
-              id="cta-hero"
-              containerClass="bg-transparent border border-white/30 text-white px-8 py-3 rounded-full hover:bg-white/10 transition-all duration-300 hover:shadow-[0_0_26px_rgba(114,154,224,0.25)]"
-            />
-          </div>
-        </Magnetic>
-      </div>
-
-      <div className="container mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
         {/* Left Side: Typography */}
-        <div className="space-y-6">
+        <div className="space-y-5">
           <p className="hero-sub inline-block rounded-full border border-white/15 bg-white/[0.03] px-4 py-1.5 text-[11px] uppercase tracking-[0.25em] text-white/70">
             Digital Strategy • UI/UX • Web Development • E-commerce
           </p>
           <div className="overflow-hidden">
-            <h1 className="stagger-line font-serif text-5xl md:text-7xl lg:text-8xl leading-[1.05] tracking-[0.02em] text-white [text-shadow:0_0_28px_rgba(134,170,238,0.22)]">
-              Digital Experiences, <span className="italic text-white/95">Engineered.</span>
+            <h1 className="stagger-line font-serif text-[clamp(2.2rem,7vw,5.2rem)] leading-[1.08] tracking-[0.015em] text-white">
+              Digital Architecture for <span className="italic text-white/90">Modern Brands</span>
             </h1>
           </div>
           <p className="hero-sub text-lg md:text-xl text-white/70 font-light max-w-2xl">
-            From digital strategy to high-performance web platforms, we help brands grow with precision and intent.
+            We design, build, and scale high-performance digital experiences — from strategy to execution.
           </p>
-          <p className="hero-sub text-sm md:text-base text-white/55 max-w-xl">
-            We align business outcomes with thoughtful design systems and scalable engineering.
-          </p>
-          <div className="hero-sub flex flex-wrap items-center gap-4 pt-6">
-            <Magnetic strength={0.25}>
-              <button className="rounded-full bg-[#3d4432] px-8 py-3 font-sans text-xs uppercase tracking-[0.18em] text-white transition-all duration-300 hover:scale-105 hover:bg-[#525d43] hover:shadow-[0_0_24px_rgba(94,118,73,0.5)]">
-                Work With Us
-              </button>
-            </Magnetic>
+          <div className="hero-sub flex flex-wrap items-center gap-4 pt-4">
             <Magnetic strength={0.2}>
-              <button className="rounded-full border border-white/25 bg-white/[0.02] px-8 py-3 font-sans text-xs uppercase tracking-[0.18em] text-white transition-all duration-300 hover:scale-105 hover:border-white/45 hover:bg-white/10 hover:shadow-[0_0_24px_rgba(112,149,220,0.3)]">
+              <button
+                onClick={() => setPage?.('about')}
+                className="w-full sm:w-auto rounded-full border border-white/20 bg-white/[0.02] px-8 py-3 font-sans text-xs uppercase tracking-[0.18em] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/10"
+              >
                 View Our Work
               </button>
             </Magnetic>
@@ -174,12 +155,12 @@ const Hero = () => {
         </div>
 
         {/* Right Side: Bento Cards */}
-        <div className="grid grid-cols-2 gap-6 h-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 h-full">
           <StatCard 
             title="Projects Delivered Globally" 
             value="50+" 
             subtext="Trusted by ambitious teams across industries and regions."
-            className="col-span-2 stat-card" 
+            className="sm:col-span-2 stat-card" 
           />
           <StatCard 
             title="Commitment To Quality & Precision" 
