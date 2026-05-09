@@ -38,8 +38,8 @@ const Contact = () => {
     const body = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nProject Details:\n${formData.projectDetails}`
     )
-
-    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`
+    const gmailComposeUrl = `https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=${to}&su=${subject}&body=${body}`
+    window.location.assign(gmailComposeUrl)
   }
 
   return (
