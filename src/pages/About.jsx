@@ -114,7 +114,7 @@ const About = ({ setPage }) => {
             <div className="flex flex-col justify-center">
               <div className="relative inline-block">
                 <h2 className="text-[clamp(5rem,22vw,18rem)] font-serif leading-[0.8] text-gradient opacity-80">
-                  25+
+                  2.5+
                 </h2>
                 <p className="absolute bottom-0 left-0 text-lg md:text-xl tracking-[0.3em] uppercase text-white/40 ml-4 translate-y-full">
                   Years of Excellence
